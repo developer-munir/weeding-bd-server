@@ -48,7 +48,19 @@ async function run() {
           const cursor = postCollection.find(query);
           const allpost = await cursor.toArray();
           res.send(allpost);
-    })    
+    }) 
+      app.get('/reviews', async (req, res) => {
+          let query = {};
+        //   console.log(req.query)
+          if (req.query.email) {
+              query = {
+                  email:req.query.email
+              }
+          }
+          const cursor = postCollection.find(query);
+          const allpost = await cursor.toArray();
+          res.send(allpost);
+    }) 
   }
   finally {
   }
